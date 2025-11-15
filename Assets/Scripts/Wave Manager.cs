@@ -18,6 +18,8 @@ public class WaveManager : MonoBehaviour
     private void Start()
     {
         remainingTime = waveTime;
+        waveNum = 1;
+        SetWaveText();
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class WaveManager : MonoBehaviour
         }
         else if (remainingTime <= 0)
         {
-             ChangeWaveStatus();
+            ChangeWaveStatus();
             if (isRest)
             {
                 remainingTime = restTime;
@@ -48,8 +50,16 @@ public class WaveManager : MonoBehaviour
 
     private void ChangeWaveStatus() // Changes wave status when the timer ends
     {
-        if(!isRest)
-        SetWaveText();
+        if(isRest)
+        {
+            waveNum++;
+            isRest = false;
+            SetWaveText();
+        }
+        else
+        {
+            isRest = true;
+        }
     }
 
     private void SetTimerText() // Sets text of timer
@@ -57,11 +67,13 @@ public class WaveManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        //Debug.Log(timerText.text);
     }
 
     private void SetWaveText() // Sets text of wave status
     {
         waveText.text = "Wave " + waveNum; //change after ui is set up
+        Debug.Log(waveText.text);
     }
 
     public float GetWaveStatus() // Returns wave status
