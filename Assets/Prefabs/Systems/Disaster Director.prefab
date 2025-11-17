@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DisasterDirector
   waveManager: {fileID: 0}
   player: {fileID: 0}
-  disasterTypes: []
+  disasterTypes:
+  - {fileID: 0}
   maxCredits: 10
   creditRegenRate: 2
   maxCreditsCurve:
