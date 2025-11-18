@@ -10,7 +10,7 @@ public class Char_Ctrl : MonoBehaviour
     public float sprintMultiplier = 1.5f;
 
     [Header("Dash")]
-    [Tooltip("dash burst")]
+    [Tooltip("` burst")]
     public float dashSpeed = 18f;
     public float dashDuration = 0.12f; // actual dash burst time (not used here but kept)
     public float dashEndDelay = 2f;    // dash lasts 2 seconds
@@ -52,28 +52,32 @@ public class Char_Ctrl : MonoBehaviour
         ).normalized;
 
         // --- player movement (original style using GetKeyDown) ---
-        if (Input.GetKeyDown(KeyCode.W))
+        if (!isDashing)
         {
-            rb.linearVelocity = Vector2.up * moveSpeed;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            rb.linearVelocity = Vector2.down * moveSpeed;
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            rb.linearVelocity = Vector2.left * moveSpeed;
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            rb.linearVelocity = Vector2.right * moveSpeed;
-        }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                rb.linearVelocity = Vector2.up * moveSpeed;
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                rb.linearVelocity = Vector2.down * moveSpeed;
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                rb.linearVelocity = Vector2.left * moveSpeed;
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                rb.linearVelocity = Vector2.right * moveSpeed;
+            }
 
-        // stop movement when no keys are pressed
-        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-        {
-            rb.linearVelocity = Vector2.zero;
+            // stop movement when no keys are pressed
+            if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+            {
+                rb.linearVelocity = Vector2.zero;
+            }
         }
+    
 
         // sprint
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -94,6 +98,7 @@ public class Char_Ctrl : MonoBehaviour
             if (dashTimer <= 0f)
             {
                 isDashing = false;
+                rb.linearVelocity = Vector2.zero;
             }
         }
 
