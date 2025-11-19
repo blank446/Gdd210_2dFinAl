@@ -10,16 +10,20 @@ public class Char_Ctrl : MonoBehaviour
     [SerializeField] private float sprintMultiplier = 1.5f;
 
     [Header("Dash")]
-    [Tooltip("dash burst")]
+    [Tooltip("how fast the dash boosts the player speed")]
     [SerializeField] private float dashSpeed = 18f;
-    [SerializeField] private float dashDuration = 0.12f;
+    [Tooltip("The dash cooldown")]
     [SerializeField] private float dashEndDelay = 2f;
 
     [Header("Player Bounds")]
     [SerializeField] private bool usePlayerBounds = true;
+    [Tooltip("How far left the player can go")]
     [SerializeField] private float playerMinX = -8.29f;
+    [Tooltip("How far right the player can go")]
     [SerializeField] private float playerMaxX = 8.33f;
+    [Tooltip("How far down the player can go")]
     [SerializeField] private float playerMinY = -4.45f;
+    [Tooltip("How far up the player can go")]
     [SerializeField] private float playerMaxY = 4.41f;
 
     [Header("Camera Bounds")]
@@ -51,37 +55,28 @@ public class Char_Ctrl : MonoBehaviour
             Input.GetAxisRaw("Vertical")
         ).normalized;
 
-        // --- player movement (original style using GetKeyDown) ---
         if (!isDashing)
         {
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                rb.linearVelocity = Vector2.up * moveSpeed;
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                rb.linearVelocity = Vector2.down * moveSpeed;
-            }
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                rb.linearVelocity = Vector2.left * moveSpeed;
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                rb.linearVelocity = Vector2.right * moveSpeed;
-            }
+            Vector2 move = Vector2.zero;
 
-            // stop movement when no keys are pressed
-            if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-            {
-                rb.linearVelocity = Vector2.zero;
-            }
-        }
+            if (Input.GetKey(KeyCode.W)) move += Vector2.up;
+            if (Input.GetKey(KeyCode.S)) move += Vector2.down;
+            if (Input.GetKey(KeyCode.A)) move += Vector2.left;
+            if (Input.GetKey(KeyCode.D)) move += Vector2.right;
 
-        // sprint
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            rb.linearVelocity *= sprintMultiplier;
+            // prevent faster diagonal movement
+            if (move.sqrMagnitude > 1f)
+                move.Normalize();
+
+            rb.linearVelocity = move * moveSpeed;
+
+            // base speed, boosted while Left Shift is held (and not dashing)
+            float speed = moveSpeed;
+            if (!isDashing && Input.GetKey(KeyCode.LeftShift))
+                speed *= sprintMultiplier;
+
+            // apply velocity (or stop if no input)
+            rb.linearVelocity = (move.sqrMagnitude > 0f) ? move * speed : Vector2.zero;
         }
 
         // dash
