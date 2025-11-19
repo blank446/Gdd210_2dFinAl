@@ -1,0 +1,50 @@
+using JetBrains.Annotations;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class PlayerHealth : MonoBehaviour
+{
+    [Tooltip("The player's maximum health")]
+    [SerializeField] private float maxHealth;
+
+    private float currentHealth;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
+    
+    public void TakeDamage() // The player takes 1 damage
+    {
+        currentHealth--;
+        if (currentHealth <= 0)
+        {
+            Death();
+        }
+    }
+
+    public void TakeDamage(float damage) // The player looses 'damage' amount of health
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Death();
+        }
+    }
+
+    public void HealDamage() // Heals a player to their max health,
+    {
+        currentHealth = maxHealth;
+    }
+
+    public void HealDamage(float health) // Heals a player 'health' amount of health
+    {
+        currentHealth += health;
+    }
+
+    public void Death()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Loads current scene. Will likely implement game over screen
+    }
+}
