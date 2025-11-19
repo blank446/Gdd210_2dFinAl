@@ -4,32 +4,32 @@ public class Char_Ctrl : MonoBehaviour
 {
     [Header("Movement")]
     [Tooltip("Change for speed")]
-    public float moveSpeed = 6f;
+    [SerializeField] private float moveSpeed = 6f;
 
     [Tooltip("How fast sprint increases")]
-    public float sprintMultiplier = 1.5f;
+    [SerializeField] private float sprintMultiplier = 1.5f;
 
     [Header("Dash")]
-    [Tooltip("` burst")]
-    public float dashSpeed = 18f;
-    public float dashDuration = 0.12f; // actual dash burst time (not used here but kept)
-    public float dashEndDelay = 2f;    // dash lasts 2 seconds
+    [Tooltip("dash burst")]
+    [SerializeField] private float dashSpeed = 18f;
+    [SerializeField] private float dashDuration = 0.12f;
+    [SerializeField] private float dashEndDelay = 2f;
 
     [Header("Player Bounds")]
-    public bool usePlayerBounds = true;
-    public float playerMinX = -8.29f;
-    public float playerMaxX = 8.33f;
-    public float playerMinY = -4.45f;
-    public float playerMaxY = 4.41f;
+    [SerializeField] private bool usePlayerBounds = true;
+    [SerializeField] private float playerMinX = -8.29f;
+    [SerializeField] private float playerMaxX = 8.33f;
+    [SerializeField] private float playerMinY = -4.45f;
+    [SerializeField] private float playerMaxY = 4.41f;
 
     [Header("Camera Bounds")]
-    public bool useCameraBounds = true;
+    [SerializeField] private bool useCameraBounds = true;
     [Tooltip("Assign your MainCamera child here")]
-    public Transform mainCamera;
-    public float cameraMinX = -8.29f;
-    public float cameraMaxX = 8.33f;
-    public float cameraMinY = -4.45f;
-    public float cameraMaxY = 4.41f;
+    [SerializeField] private Transform mainCamera;
+    [SerializeField] private float cameraMinX = -8.29f;
+    [SerializeField] private float cameraMaxX = 8.33f;
+    [SerializeField] private float cameraMinY = -4.45f;
+    [SerializeField] private float cameraMaxY = 4.41f;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -77,7 +77,6 @@ public class Char_Ctrl : MonoBehaviour
                 rb.linearVelocity = Vector2.zero;
             }
         }
-    
 
         // sprint
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -130,7 +129,6 @@ public class Char_Ctrl : MonoBehaviour
     }
 
     // --- Bounds helpers ---
-
     private void EnforcePlayerBounds()
     {
         Vector2 p = rb.position;
