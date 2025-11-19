@@ -5,7 +5,9 @@ public class Tornado_Script : MonoBehaviour
     [Header("Movement Setting")]
     [Tooltip("How fast the tornado moves")]
     [SerializeField] private float moveSpeed = 5f;
-
+    [Header("Lifetime")]
+    [Tooltip("How many seconds the tornado exists before disappearing")]
+    [SerializeField] private float lifeTime = 5f;
     [Header("Bounds")]
     [Tooltip("How far left it can go")]
     [SerializeField] private float minX = -8.29f;
@@ -24,7 +26,7 @@ public class Tornado_Script : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;      // no gravity in 2D top-down
         rb.freezeRotation = true;  // keep upright
-
+        Destroy(gameObject, lifeTime);
         // start moving in a random direction
         float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
         moveDirection = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)).normalized;
