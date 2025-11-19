@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3317656273561435240}
   - component: {fileID: 6266962276755075483}
   - component: {fileID: 7846372173970767950}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,6 +50,19 @@ MonoBehaviour:
   moveSpeed: 6
   sprintMultiplier: 1.5
   dashSpeed: 18
+  dashDuration: 0.12
+  dashEndDelay: 2
+  usePlayerBounds: 1
+  playerMinX: -8.29
+  playerMaxX: 8.33
+  playerMinY: -4.45
+  playerMaxY: 4.41
+  useCameraBounds: 1
+  mainCamera: {fileID: 0}
+  cameraMinX: -8.29
+  cameraMaxX: 8.33
+  cameraMinY: -4.45
+  cameraMaxY: 4.41
 --- !u!50 &6266962276755075483
 Rigidbody2D:
   serializedVersion: 5
@@ -100,7 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6762031371375440109}
   - component: {fileID: 51990496079649718}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pixilart-sprite_2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
