@@ -9,7 +9,6 @@ public class Meteor : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     private PlayerHealth playerHealth;
 
-
     [Header("Meteor Attributes")]
     [Tooltip("Radius of the circular hitbox when the meteor impacts.")]
     [SerializeField] private float hitboxSize = 1f;
@@ -20,6 +19,7 @@ public class Meteor : MonoBehaviour
     [Tooltip("How long the hitbox stays active after appearing.")]
     [SerializeField] private float hitboxDuration = 0.3f;
 
+    private Animator anim;
 
     private bool hitboxActive = false;
     private float timer = 0f;
@@ -36,6 +36,8 @@ public class Meteor : MonoBehaviour
         {
             Debug.LogWarning("Meteor has no player reference!");
         }
+
+        anim = GetComponent<Animator>();
     }
 
 
@@ -47,6 +49,7 @@ public class Meteor : MonoBehaviour
         if (!hitboxActive && timer >= landingTime)
         {
             ActivateHitbox();
+            anim.SetTrigger("Explode");
         }
 
         // 2. When hitbox is active → count down until it expires
