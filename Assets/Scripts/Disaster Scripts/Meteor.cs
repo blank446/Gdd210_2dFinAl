@@ -79,10 +79,13 @@ public class Meteor : MonoBehaviour
     private void DeactivateHitbox()
     {
         hitboxActive = false;
+    }
 
-        // Destroy meteor after impact
+    public void DestroyMeteor() // Destroy meteor after animation ends
+    {
         Destroy(gameObject);
     }
+
 
 
     // This draws the hitbox in the Scene view for debugging
