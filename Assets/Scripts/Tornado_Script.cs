@@ -73,7 +73,28 @@ public class Tornado_Script : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Tornado hit the player!");
+
+            SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                // Make player flash red
+                sr.color = Color.red;
+
+                // Return to normal after a tiny delay
+                Invoke(nameof(ResetPlayerColor), 0.1f);
+            }
         }
     }
-
+    private void ResetPlayerColor()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.color = Color.white;
+            }
+        }
+    }
 }
