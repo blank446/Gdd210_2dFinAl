@@ -6,8 +6,11 @@ public class Meteor : MonoBehaviour
     [Tooltip("Reference to the player object so we can access its PlayerHealth.")]
     [SerializeField] private GameObject player;
     [Tooltip("Layer used for detecting the player only.")]
-    [SerializeField] private LayerMask playerLayer;
+    //[SerializeField] private LayerMask playerLayer;
     private PlayerHealth playerHealth;
+    private Rigidbody2D playerRb;
+
+
 
     [Header("Meteor Attributes")]
     [Tooltip("Radius of the circular hitbox when the meteor impacts.")]
@@ -31,6 +34,7 @@ public class Meteor : MonoBehaviour
         if (player != null)
         { 
             playerHealth = player.GetComponent<PlayerHealth>();
+            playerRb = player.GetComponent<Rigidbody2D>();
         }
         else
         {
@@ -64,17 +68,17 @@ public class Meteor : MonoBehaviour
     {
         hitboxActive = true;
 
-        // Perform a circle overlap check around the meteor
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, hitboxSize, playerLayer);
+        if (playerRb == null)
+            return;
 
-        if (hit != null && hit.CompareTag("Player"))
+        float distance = Vector2.Distance(transform.position, playerRb.position);
+
+        if (distance <= hitboxSize) // Deal damage to the player if within hitbox
         {
-            // Deal damage to the player
             if (playerHealth != null)
                 playerHealth.TakeDamage();
         }
     }
-
 
     private void DeactivateHitbox()
     {
