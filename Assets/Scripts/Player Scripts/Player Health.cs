@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage() // The player takes 1 damage
     {
         currentHealth--;
+        Debug.Log("Damage Taken. Current Health: " + currentHealth);
         if (currentHealth <= 0)
         {
             Death();
@@ -48,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Death()
     {
+        Debug.Log("Player dies");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Loads current scene. Will likely implement game over screen
     }
 }

@@ -70,14 +70,23 @@ public class Meteor : MonoBehaviour
         hitboxActive = true;
 
         if (playerRb == null)
+        {
+            Debug.Log("Player rigidbody not detected.");
             return;
+        }
+
+            
 
         float distance = Vector2.Distance(transform.position, playerRb.position);
 
         if (distance <= hitboxSize) // Deal damage to the player if within hitbox
         {
             if (playerHealth != null)
+            {
+                Debug.Log("Meteor hits player.");
                 playerHealth.TakeDamage();
+            }
+                
         }
     }
 
