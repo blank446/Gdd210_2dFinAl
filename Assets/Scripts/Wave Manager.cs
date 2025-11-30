@@ -10,6 +10,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float waveTime; // Time for each wave. Could become an array of times if we want to change the waves
     [SerializeField] private float restTime; // Time between each wave
 
+    [SerializedField] private PlayerHealth player; // PlayerHealth script to heal player after wave ends.
+
     private float remainingTime; // Time left before next event
     private float waveNum; // Wave number
     private Boolean isRest = false; // Determines whether it is time for a wave or a rest period
@@ -39,6 +41,7 @@ public class WaveManager : MonoBehaviour
             ChangeWaveStatus();
             if (isRest)
             {
+                player.HealDamage();
                 remainingTime = restTime;
             }
             else

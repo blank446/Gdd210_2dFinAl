@@ -54,6 +54,7 @@ public class Meteor : MonoBehaviour
         {
             ActivateHitbox();
             anim.SetTrigger("Explode");
+            Debug.Log("Meteor explodes");
         }
 
         // 2. When hitbox is active → count down until it expires

@@ -140,6 +140,7 @@ public class DisasterDirector : MonoBehaviour
 
         // spawn instance
         GameObject spawned = Instantiate(type.prefab, spawnPos, Quaternion.identity);
+        Debug.Log(type.disasterName + " spawned");
 
         // track it for rest cleanup
         activeDisasters.Add(spawned);
