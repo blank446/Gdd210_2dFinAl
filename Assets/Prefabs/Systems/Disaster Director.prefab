@@ -47,7 +47,7 @@ MonoBehaviour:
   waveManager: {fileID: 0}
   player: {fileID: 0}
   disasterTypes:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: c07557f5a7a953344b38a52b978a2352, type: 2}
   maxCredits: 10
   creditRegenRate: 2
   maxCreditsCurve:
