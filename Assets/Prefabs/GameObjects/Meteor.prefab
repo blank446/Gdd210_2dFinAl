@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5.3, y: 5.3, z: 5.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,9 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Meteor
   player: {fileID: 5688054126381338786, guid: d94e143a971a5b74daf412d5afc57f5d, type: 3}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
   hitboxSize: 1
   landingTime: 1.5
   hitboxDuration: 1

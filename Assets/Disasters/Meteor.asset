@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b163c162664e74290d01b1a5e82c0b, type: 3}
   m_Name: Meteor
   m_EditorClassIdentifier: Assembly-CSharp::DisasterType
-  disasterName: 
-  prefab: {fileID: 0}
+  disasterName: Meteor
+  prefab: {fileID: 630383781827082136, guid: 01b25a02e1d3c004eb8172ffcabf6158, type: 3}
   cost: 1
   minSpawnDelay: 1
   maxSpawnDelay: 3
-  minSpawnDistance: 8
-  maxSpawnDistance: 14
+  minSpawnDistance: 0
+  maxSpawnDistance: 5
