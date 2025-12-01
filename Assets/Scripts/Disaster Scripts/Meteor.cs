@@ -8,9 +8,6 @@ public class Meteor : MonoBehaviour, IDisasterNeedsPlayer
     private Rigidbody2D playerRb;
 
     [Header("Meteor Attributes")]
-    [Tooltip("Radius of the circular hitbox when the meteor impacts.")]
-    [SerializeField] private float hitboxSize = 1f;
-
     [Tooltip("How long after spawning before the meteor hitbox appears.")]
     [SerializeField] private float landingTime = 1.5f;
 
@@ -35,8 +32,6 @@ public class Meteor : MonoBehaviour, IDisasterNeedsPlayer
 
         hitbox.enabled = false; // start off
         hitbox.isTrigger = true;
-
-        hitbox.radius = hitboxSize;
     }
 
     void Start()
@@ -109,13 +104,5 @@ public class Meteor : MonoBehaviour, IDisasterNeedsPlayer
         player = p;
         playerHealth = p.GetComponent<PlayerHealth>();
         playerRb = p.GetComponent<Rigidbody2D>();
-    }
-
-
-    // This draws the hitbox in the Scene view for debugging
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, hitboxSize);
     }
 }
