@@ -47,6 +47,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1996458572852311764}
+    - target: {fileID: 4020191892065924768, guid: e8b13939b722b884f996a252e43e6031, type: 3}
+      propertyPath: waveTime
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4643042679759718623, guid: e8b13939b722b884f996a252e43e6031, type: 3}
       propertyPath: m_Name
       value: Wave UI
@@ -172,6 +176,22 @@ PrefabInstance:
       propertyPath: waveManager
       value: 
       objectReference: {fileID: 3471792264234057064}
+    - target: {fileID: 6884571448343933142, guid: 4b9ecb263b153f64e9a161d7e86fc61a, type: 3}
+      propertyPath: regenCurve.m_Curve.Array.data[1].time
+      value: 10.731247
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884571448343933142, guid: 4b9ecb263b153f64e9a161d7e86fc61a, type: 3}
+      propertyPath: regenCurve.m_Curve.Array.data[1].value
+      value: 5.8499985
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884571448343933142, guid: 4b9ecb263b153f64e9a161d7e86fc61a, type: 3}
+      propertyPath: regenCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884571448343933142, guid: 4b9ecb263b153f64e9a161d7e86fc61a, type: 3}
+      propertyPath: regenCurve.m_Curve.Array.data[1].outSlope
+      value: 0.33333334
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

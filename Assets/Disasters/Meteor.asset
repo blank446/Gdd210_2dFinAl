@@ -15,7 +15,7 @@ MonoBehaviour:
   disasterName: Meteor
   prefab: {fileID: 630383781827082136, guid: 01b25a02e1d3c004eb8172ffcabf6158, type: 3}
   cost: 1
-  minSpawnDelay: 1
-  maxSpawnDelay: 3
+  minSpawnDelay: 0.5
+  maxSpawnDelay: 2
   minSpawnDistance: 0
   maxSpawnDistance: 5

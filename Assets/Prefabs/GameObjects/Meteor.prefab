@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6063452665882121964}
   - component: {fileID: 245331782822164967}
   - component: {fileID: 2321916880383558114}
+  - component: {fileID: 5608857511868695550}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Untagged
@@ -46,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f23b8512bac3848b99d8d45d6b187c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Meteor
-  player: {fileID: 5688054126381338786, guid: d94e143a971a5b74daf412d5afc57f5d, type: 3}
   hitboxSize: 1
   landingTime: 1.5
   hitboxDuration: 1
@@ -130,3 +130,39 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &5608857511868695550
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630383781827082136}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.08
