@@ -74,8 +74,11 @@ public class Tornado_Script : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Tornado hit the player!");
-
+            PlayerHealth health = other.GetComponent<PlayerHealth>();
+            if (health != null)
+            {
+                health.TakeDamage(1);
+            }
             SpriteRenderer sr = other.gameObject.GetComponent<SpriteRenderer>();
             if (sr != null)
             {
@@ -98,5 +101,9 @@ public class Tornado_Script : MonoBehaviour
                 sr.color = Color.white;
             }
         }
+    }
+    public void SetMoveSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
     }
 }

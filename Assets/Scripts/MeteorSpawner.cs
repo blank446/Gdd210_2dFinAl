@@ -62,4 +62,8 @@ public class MeteorSpawner : MonoBehaviour
             }
         }
     }
+    public void SetSpawnInterval(float newInterval)
+    {
+        spawnInterval = newInterval;
+    }
 }
