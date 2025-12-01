@@ -70,13 +70,13 @@ public class Tornado_Script : MonoBehaviour
     }
 
     // Collision
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Tornado hit the player!");
 
-            SpriteRenderer sr = collision.gameObject.GetComponent<SpriteRenderer>();
+            SpriteRenderer sr = other.gameObject.GetComponent<SpriteRenderer>();
             if (sr != null)
             {
                 // Make player flash red

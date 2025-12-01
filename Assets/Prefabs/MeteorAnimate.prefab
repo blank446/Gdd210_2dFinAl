@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1819265984307967560}
   - component: {fileID: 5869487341211877096}
   - component: {fileID: 8173770647477087115}
+  - component: {fileID: 4967021961128832568}
   m_Layer: 0
   m_Name: MeteorAnimate
   m_TagString: Untagged
@@ -130,3 +131,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4967021961128832568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113284142873890116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55f68f246e3d9942a362f39506cad4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeteorCollision
+  lifeTime: 5
+  flashTime: 0.1
