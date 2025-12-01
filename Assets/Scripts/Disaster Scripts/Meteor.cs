@@ -1,16 +1,11 @@
 ﻿using UnityEngine;
 
-public class Meteor : MonoBehaviour
+public class Meteor : MonoBehaviour, IDisasterNeedsPlayer
 {
-    [Header("Player Reference")]
-    [Tooltip("Reference to the player object so we can access its PlayerHealth.")]
-    [SerializeField] private GameObject player;
-    [Tooltip("Layer used for detecting the player only.")]
-    //[SerializeField] private LayerMask playerLayer;
+    // Player references to access playerHealth and rigidbody
+    private GameObject player;
     private PlayerHealth playerHealth;
     private Rigidbody2D playerRb;
-
-
 
     [Header("Meteor Attributes")]
     [Tooltip("Radius of the circular hitbox when the meteor impacts.")]
@@ -27,12 +22,28 @@ public class Meteor : MonoBehaviour
     private bool hitboxActive = false;
     private float timer = 0f;
 
+    private CircleCollider2D hitbox; // use collider as hitbox
+
+
+    void Awake()
+    {
+        // Get circle collider
+        hitbox = GetComponent<CircleCollider2D>();
+
+        if (hitbox == null)
+            Debug.LogError("Meteor needs a CircleCollider2D!");
+
+        hitbox.enabled = false; // start off
+        hitbox.isTrigger = true;
+
+        hitbox.radius = hitboxSize;
+    }
 
     void Start()
     {
         // Cache player components for performance and easier access later
         if (player != null)
-        { 
+        {
             playerHealth = player.GetComponent<PlayerHealth>();
             playerRb = player.GetComponent<Rigidbody2D>();
         }
@@ -43,7 +54,6 @@ public class Meteor : MonoBehaviour
 
         anim = GetComponent<Animator>();
     }
-
 
     void Update()
     {
@@ -64,35 +74,29 @@ public class Meteor : MonoBehaviour
         }
     }
 
-
     private void ActivateHitbox()
     {
         hitboxActive = true;
-
-        if (playerRb == null)
-        {
-            Debug.Log("Player rigidbody not detected.");
-            return;
-        }
-
-            
-
-        float distance = Vector2.Distance(transform.position, playerRb.position);
-
-        if (distance <= hitboxSize) // Deal damage to the player if within hitbox
-        {
-            if (playerHealth != null)
-            {
-                Debug.Log("Meteor hits player.");
-                playerHealth.TakeDamage();
-            }
-                
-        }
+        hitbox.enabled = true;
     }
 
     private void DeactivateHitbox()
     {
         hitboxActive = false;
+        hitbox.enabled = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!hitboxActive) return;
+
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Meteor hits player via collider!");
+
+            if (playerHealth != null)
+                playerHealth.TakeDamage();
+        }
     }
 
     public void DestroyMeteor() // Destroy meteor after animation ends
@@ -100,6 +104,12 @@ public class Meteor : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void SetPlayer(GameObject p)
+    {
+        player = p;
+        playerHealth = p.GetComponent<PlayerHealth>();
+        playerRb = p.GetComponent<Rigidbody2D>();
+    }
 
 
     // This draws the hitbox in the Scene view for debugging
