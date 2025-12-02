@@ -52,4 +52,9 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Player dies");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Loads current scene. Will likely implement game over screen
     }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
 }
