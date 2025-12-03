@@ -4,32 +4,36 @@ public class Char_Ctrl : MonoBehaviour
 {
     [Header("Movement")]
     [Tooltip("Change for speed")]
-    public float moveSpeed = 6f;
+    [SerializeField] private float moveSpeed = 6f;
 
     [Tooltip("How fast sprint increases")]
-    public float sprintMultiplier = 1.5f;
+    [SerializeField] private float sprintMultiplier = 1.5f;
 
     [Header("Dash")]
-    [Tooltip("dash burst")]
-    public float dashSpeed = 18f;
-    public float dashDuration = 0.12f; // actual dash burst time (not used here but kept)
-    public float dashEndDelay = 2f;    // dash lasts 2 seconds
+    [Tooltip("how fast the dash boosts the player speed")]
+    [SerializeField] private float dashSpeed = 18f;
+    [Tooltip("The dash cooldown")]
+    [SerializeField] private float dashEndDelay = 2f;
 
     [Header("Player Bounds")]
-    public bool usePlayerBounds = true;
-    public float playerMinX = -8.29f;
-    public float playerMaxX = 8.33f;
-    public float playerMinY = -4.45f;
-    public float playerMaxY = 4.41f;
+    [SerializeField] private bool usePlayerBounds = true;
+    [Tooltip("How far left the player can go")]
+    [SerializeField] private float playerMinX = -8.29f;
+    [Tooltip("How far right the player can go")]
+    [SerializeField] private float playerMaxX = 8.33f;
+    [Tooltip("How far down the player can go")]
+    [SerializeField] private float playerMinY = -4.45f;
+    [Tooltip("How far up the player can go")]
+    [SerializeField] private float playerMaxY = 4.41f;
 
     [Header("Camera Bounds")]
-    public bool useCameraBounds = true;
+    [SerializeField] private bool useCameraBounds = true;
     [Tooltip("Assign your MainCamera child here")]
-    public Transform mainCamera;
-    public float cameraMinX = -8.29f;
-    public float cameraMaxX = 8.33f;
-    public float cameraMinY = -4.45f;
-    public float cameraMaxY = 4.41f;
+    [SerializeField] private Transform mainCamera;
+    [SerializeField] private float cameraMinX = -8.29f;
+    [SerializeField] private float cameraMaxX = 8.33f;
+    [SerializeField] private float cameraMinY = -4.45f;
+    [SerializeField] private float cameraMaxY = 4.41f;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -51,34 +55,28 @@ public class Char_Ctrl : MonoBehaviour
             Input.GetAxisRaw("Vertical")
         ).normalized;
 
-        // --- player movement (original style using GetKeyDown) ---
-        if (Input.GetKeyDown(KeyCode.W))
+        if (!isDashing)
         {
-            rb.linearVelocity = Vector2.up * moveSpeed;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            rb.linearVelocity = Vector2.down * moveSpeed;
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            rb.linearVelocity = Vector2.left * moveSpeed;
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            rb.linearVelocity = Vector2.right * moveSpeed;
-        }
+            Vector2 move = Vector2.zero;
 
-        // stop movement when no keys are pressed
-        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-        {
-            rb.linearVelocity = Vector2.zero;
-        }
+            if (Input.GetKey(KeyCode.W)) move += Vector2.up;
+            if (Input.GetKey(KeyCode.S)) move += Vector2.down;
+            if (Input.GetKey(KeyCode.A)) move += Vector2.left;
+            if (Input.GetKey(KeyCode.D)) move += Vector2.right;
 
-        // sprint
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            rb.linearVelocity *= sprintMultiplier;
+            // prevent faster diagonal movement
+            if (move.sqrMagnitude > 1f)
+                move.Normalize();
+
+            rb.linearVelocity = move * moveSpeed;
+
+            // base speed, boosted while Left Shift is held (and not dashing)
+            float speed = moveSpeed;
+            if (!isDashing && Input.GetKey(KeyCode.LeftShift))
+                speed *= sprintMultiplier;
+
+            // apply velocity (or stop if no input)
+            rb.linearVelocity = (move.sqrMagnitude > 0f) ? move * speed : Vector2.zero;
         }
 
         // dash
@@ -94,6 +92,7 @@ public class Char_Ctrl : MonoBehaviour
             if (dashTimer <= 0f)
             {
                 isDashing = false;
+                rb.linearVelocity = Vector2.zero;
             }
         }
 
@@ -125,7 +124,6 @@ public class Char_Ctrl : MonoBehaviour
     }
 
     // --- Bounds helpers ---
-
     private void EnforcePlayerBounds()
     {
         Vector2 p = rb.position;
