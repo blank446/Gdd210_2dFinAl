@@ -8272,7 +8272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139783126969877215, guid: 23c758312ce77654eb1f4583926bf204, type: 3}
       propertyPath: usePlayerBounds
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 139783126969877215, guid: 23c758312ce77654eb1f4583926bf204, type: 3}
       propertyPath: sprintMultiplier
