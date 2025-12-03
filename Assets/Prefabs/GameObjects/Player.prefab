@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 2844429546059393424}
   - component: {fileID: 3317656273561435240}
   - component: {fileID: 6266962276755075483}
-  m_Layer: 0
+  - component: {fileID: 7846372173970767950}
+  - component: {fileID: 1120530610792924687}
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5688054126381338786}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3083937, y: 1.8994384, z: 0.049875434}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49,6 +51,19 @@ MonoBehaviour:
   moveSpeed: 6
   sprintMultiplier: 1.5
   dashSpeed: 18
+  dashDuration: 0.12
+  dashEndDelay: 2
+  usePlayerBounds: 1
+  playerMinX: -8.29
+  playerMaxX: 8.33
+  playerMinY: -4.45
+  playerMaxY: 4.41
+  useCameraBounds: 1
+  mainCamera: {fileID: 0}
+  cameraMinX: -8.29
+  cameraMaxX: 8.33
+  cameraMinY: -4.45
+  cameraMaxY: 4.41
 --- !u!50 &6266962276755075483
 Rigidbody2D:
   serializedVersion: 5
@@ -76,6 +91,56 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7846372173970767950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5688054126381338786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfef6fc9b292664dae7a991a48cce06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 6
+--- !u!70 &1120530610792924687
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5688054126381338786}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.94, y: 1}
+  m_Direction: 0
 --- !u!1 &7957462177584005775
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6762031371375440109}
   - component: {fileID: 51990496079649718}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pixilart-sprite_2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

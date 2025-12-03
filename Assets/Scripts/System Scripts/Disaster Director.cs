@@ -140,6 +140,12 @@ public class DisasterDirector : MonoBehaviour
 
         // spawn instance
         GameObject spawned = Instantiate(type.prefab, spawnPos, Quaternion.identity);
+        Debug.Log(type.disasterName + " spawned");
+
+        // Assigns player using interface
+        IDisasterNeedsPlayer needsPlayer = spawned.GetComponent<IDisasterNeedsPlayer>();
+        if (needsPlayer != null)
+            needsPlayer.SetPlayer(player.gameObject);
 
         // track it for rest cleanup
         activeDisasters.Add(spawned);
