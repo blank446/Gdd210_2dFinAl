@@ -160,8 +160,8 @@ public class Char_Ctrl : MonoBehaviour
     /// </summary>
     private void UpdateAnimator()
     {
-        //anim.SetFloat("MoveX", moveInput.x);
-       // anim.SetFloat("MoveY", moveInput.y);
-       // anim.SetBool("IsMoving", moveInput.sqrMagnitude > 0.001f);
+        anim.SetFloat("MoveX", moveInput.x);
+        anim.SetFloat("MoveY", moveInput.y);
+        anim.SetBool("IsMoving", moveInput.sqrMagnitude > 0.001f);
     }
 }
