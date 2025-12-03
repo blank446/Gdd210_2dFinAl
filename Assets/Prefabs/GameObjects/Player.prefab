@@ -51,7 +51,6 @@ MonoBehaviour:
   moveSpeed: 6
   sprintMultiplier: 1.5
   dashSpeed: 18
-  dashDuration: 0.12
   dashEndDelay: 2
   usePlayerBounds: 1
   playerMinX: -8.29
@@ -103,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bfef6fc9b292664dae7a991a48cce06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 6
+  maxHealth: 3
 --- !u!70 &1120530610792924687
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
