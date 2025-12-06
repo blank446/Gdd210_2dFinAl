@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 88886664292788582}
   - component: {fileID: 5144647544821592934}
   - component: {fileID: 7207467706129903502}
+  - component: {fileID: 1415850278396216043}
   m_Layer: 0
-  m_Name: MichaelAnimatedPrefab
+  m_Name: PlayerV2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,13 +52,12 @@ MonoBehaviour:
   moveSpeed: 6
   sprintMultiplier: 1.5
   dashSpeed: 18
-  dashDuration: 0.12
   dashEndDelay: 2
   usePlayerBounds: 1
-  playerMinX: -8.29
-  playerMaxX: 8.33
-  playerMinY: -4.45
-  playerMaxY: 4.41
+  playerMinX: -9.5
+  playerMaxX: 21
+  playerMinY: -12.5
+  playerMaxY: 6.7
   useCameraBounds: 1
   mainCamera: {fileID: 5433314852045390191}
   cameraMinX: -8.29
@@ -160,17 +160,30 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -6213078321743470563, guid: 434f0e7791ae54a42a6ec6cd8e089a79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.68, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1415850278396216043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447399277389261267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfef6fc9b292664dae7a991a48cce06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 3
 --- !u!1 &5574381098440856285
 GameObject:
   m_ObjectHideFlags: 0
