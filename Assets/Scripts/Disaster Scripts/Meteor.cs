@@ -83,6 +83,7 @@ public class Meteor : MonoBehaviour, IDisasterNeedsPlayer
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Collider2D entered in space");
         if (!hitboxActive) return;
 
         if (other.CompareTag("Player"))
