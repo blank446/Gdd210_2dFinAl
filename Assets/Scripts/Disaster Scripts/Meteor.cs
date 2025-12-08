@@ -92,6 +92,29 @@ public class Meteor : MonoBehaviour, IDisasterNeedsPlayer
 
             if (playerHealth != null)
                 playerHealth.TakeDamage();
+            // Player flash
+            SpriteRenderer sr = other.gameObject.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                // Make player flash red
+                sr.color = Color.red;
+
+                // Return to normal after a tiny delay
+                Invoke(nameof(ResetPlayerColor), 0.1f);
+            }
+        }
+    }
+
+    private void ResetPlayerColor()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.color = Color.white;
+            }
         }
     }
 

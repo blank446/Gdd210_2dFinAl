@@ -105,15 +105,15 @@ SpriteRenderer:
   m_SortingLayerID: -1355510709
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -31024622964357279, guid: 84f305af4bd26e44fb8e799254ba182b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.4, y: 3.7333333}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &3865909447639747229
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8bb19f20b723240973056a1b3c971f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tornado_Script
-  moveSpeed: 5
+  moveSpeed: 6
   lifeTime: 10
   minX: -8
   maxX: 8.33
@@ -195,6 +195,6 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0.26, y: -0.42}
+  m_Size: {x: 1.82, y: 2.87}
   m_Direction: 0
