@@ -349,6 +349,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6561839653039813070, guid: 369b318de2335134fa93f4c0ff3c86db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 7700976216355841568, guid: 369b318de2335134fa93f4c0ff3c86db, type: 3}
       propertyPath: m_Name
       value: Textured Ground

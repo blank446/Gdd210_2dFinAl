@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tornado_Script
   moveSpeed: 5
-  lifeTime: 5
+  lifeTime: 10
   minX: -8
   maxX: 8.33
   minY: -4.45
