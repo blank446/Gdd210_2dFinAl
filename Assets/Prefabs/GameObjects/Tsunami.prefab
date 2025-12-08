@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2719b25a8f0cb03418bf92faa52b683d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tsunami_Script
-  moveSpeed: 6
-  horizontalPadding: 1
+  moveSpeed: 8
+  horizontalPadding: 6
   flashDuration: 0.1
 --- !u!50 &7161277442065427547
 Rigidbody2D:

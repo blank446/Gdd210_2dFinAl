@@ -197,8 +197,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
   timerText: {fileID: 6529243798034933453}
   waveText: {fileID: 4556103375834642518}
-  waveTime: 10
+  waveTime: 30
   restTime: 5
+  player: {fileID: 0}
 --- !u!1 &4643042679759718623
 GameObject:
   m_ObjectHideFlags: 0

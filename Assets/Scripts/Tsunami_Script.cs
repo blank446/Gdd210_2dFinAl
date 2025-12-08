@@ -20,10 +20,12 @@ public class Tsunami_Script : MonoBehaviour
     private float topEdge;
     private bool movingRight;
     private const float Z_DEPTH = -1f;
+    private SpriteRenderer spriteRenderer; // Sprite Renderer to flip the sprite
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); // Get Sprite renderer
     }
 
     private void Start()
@@ -57,6 +59,7 @@ public class Tsunami_Script : MonoBehaviour
             // Spawn just off the right, move left
             spawnX = rightEdge + horizontalPadding;
             moveDirection = Vector2.left;
+            spriteRenderer.flipX = true; // Flips the sprite horizontally
         }
 
         // Position the rigidbody (physics) and transform (render)
@@ -92,21 +95,34 @@ public class Tsunami_Script : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player"))
-            return;
-
-        SpriteRenderer sr = other.GetComponent<SpriteRenderer>();
-        if (sr != null)
+        if (other.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(FlashPlayer(sr));
+            PlayerHealth health = other.GetComponent<PlayerHealth>();
+            if (health != null)
+            {
+                health.TakeDamage(1);
+            }
+            SpriteRenderer sr = other.gameObject.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                // Make player flash red
+                sr.color = Color.red;
+
+                // Return to normal after a tiny delay
+                Invoke(nameof(ResetPlayerColor), 0.1f);
+            }
         }
     }
-
-    private IEnumerator FlashPlayer(SpriteRenderer sr)
+    private void ResetPlayerColor()
     {
-        Color original = sr.color;
-        sr.color = Color.cyan;
-        yield return new WaitForSeconds(flashDuration);
-        sr.color = original;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.color = Color.white;
+            }
+        }
     }
 }
