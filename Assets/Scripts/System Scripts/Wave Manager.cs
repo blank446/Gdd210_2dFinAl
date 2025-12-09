@@ -6,6 +6,7 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText; // Text for time UI element
     [SerializeField] private TextMeshProUGUI waveText; // Text for wave status UI element
+    [SerializeField] private TextMeshProUGUI resultsText;
 
     [SerializeField] private float waveTime; // Time for each wave. Could become an array of times if we want to change the waves
     [SerializeField] private float restTime; // Time between each wave
@@ -73,9 +74,10 @@ public class WaveManager : MonoBehaviour
         //Debug.Log(timerText.text);
     }
 
-    private void SetWaveText() // Sets text of wave status
+    private void SetWaveText() // Sets text of wave status and results
     {
         waveText.text = "Wave " + waveNum; //change after ui is set up
+        resultsText.text = "You made it to Wave " + waveNum;
         Debug.Log(waveText.text);
     }
 
