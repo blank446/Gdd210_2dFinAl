@@ -63,6 +63,7 @@ public class WaveManager : MonoBehaviour
         else
         {
             isRest = true;
+            SetWaveText();
         }
     }
 
@@ -76,8 +77,15 @@ public class WaveManager : MonoBehaviour
 
     private void SetWaveText() // Sets text of wave status and results
     {
-        waveText.text = "Wave " + waveNum; //change after ui is set up
-        resultsText.text = "You made it to Wave " + waveNum;
+        if (!isRest)
+        {
+            waveText.text = "Wave " + waveNum; //change after ui is set up
+        }
+        else
+        {
+            waveText.text = "Next Wave Incoming";
+        }
+            resultsText.text = "You made it to Wave " + waveNum;
         Debug.Log(waveText.text);
     }
 
