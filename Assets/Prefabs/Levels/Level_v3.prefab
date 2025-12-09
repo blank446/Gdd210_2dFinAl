@@ -395,10 +395,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 774880587042354065}
     m_Modifications:
     - target: {fileID: 1415850278396216043, guid: 23c758312ce77654eb1f4583926bf204, type: 3}
-      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1415850278396216043, guid: 23c758312ce77654eb1f4583926bf204, type: 3}
       propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
       objectReference: {fileID: 0}
