@@ -15,7 +15,7 @@ public class DisasterType : ScriptableObject
     [Header("Spawn Timing")]
     [Tooltip("Minimum delay before the disaster can be spawned again.")]
     public float minSpawnDelay = 1f;
-    [Tooltip("Maximum delay before thedisaster can be spawned again.")]
+    [Tooltip("Maximum delay before the disaster can be spawned again.")]
     public float maxSpawnDelay = 3f;
 
     [Header("Spawn Distance from Player")]

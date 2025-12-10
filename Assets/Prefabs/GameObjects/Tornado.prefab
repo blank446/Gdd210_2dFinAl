@@ -128,12 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8bb19f20b723240973056a1b3c971f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tornado_Script
-  moveSpeed: 6
-  lifeTime: 10
-  minX: -8
-  maxX: 8.33
-  minY: -4.45
-  maxY: 4.41
+  moveSpeed: 8
+  lifeTime: 30
+  minX: -23
+  maxX: 23
+  minY: -15
+  maxY: 15
 --- !u!50 &1294415879910109807
 Rigidbody2D:
   serializedVersion: 5
