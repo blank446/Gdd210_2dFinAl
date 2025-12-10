@@ -55,16 +55,16 @@ MonoBehaviour:
   dashSpeed: 18
   dashEndDelay: 2
   usePlayerBounds: 1
-  playerMinX: -16.5
-  playerMaxX: 28.5
-  playerMinY: -18
-  playerMaxY: 10.5
+  playerMinX: -23
+  playerMaxX: 23
+  playerMinY: -14.5
+  playerMaxY: 14.5
   useCameraBounds: 1
   mainCamera: {fileID: 5433314852045390191}
-  cameraMinX: -8.29
-  cameraMaxX: 8.33
-  cameraMinY: -4.45
-  cameraMaxY: 4.41
+  cameraMinX: -23.5
+  cameraMaxX: 23.5
+  cameraMinY: -15.2
+  cameraMaxY: 15.2
 --- !u!114 &1415850278396216043
 MonoBehaviour:
   m_ObjectHideFlags: 0

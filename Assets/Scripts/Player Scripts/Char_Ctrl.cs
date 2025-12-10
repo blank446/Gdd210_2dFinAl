@@ -147,13 +147,26 @@ public class Char_Ctrl : MonoBehaviour
     {
         if (mainCamera == null) return;
 
-        Vector3 camPos = mainCamera.position;
+        // --- Calculate camera half extents based on orthographic size & aspect ratio ---
+        Camera cam = mainCamera.GetComponent<Camera>();
+        float halfHeight = cam.orthographicSize;
+        float halfWidth = halfHeight * cam.aspect;
 
-        float clampedX = Mathf.Clamp(camPos.x, cameraMinX, cameraMaxX);
-        float clampedY = Mathf.Clamp(camPos.y, cameraMinY, cameraMaxY);
+        // We want the camera to attempt to follow the player, but stop when the edges hit the bounds.
+        // So instead of clamping the current camera position, we clamp the *desired* camera position.
 
-        mainCamera.position = new Vector3(clampedX, clampedY, camPos.z);
+        Vector3 desiredPos = transform.position; // camera normally follows player
+        desiredPos.z = mainCamera.position.z;     // keep original depth
+
+        // --- Clamp using bounds adjusted by camera's visible edges ---
+        float clampedX = Mathf.Clamp(desiredPos.x, cameraMinX + halfWidth, cameraMaxX - halfWidth);
+        float clampedY = Mathf.Clamp(desiredPos.y, cameraMinY + halfHeight, cameraMaxY - halfHeight);
+
+        // apply final position (camera follows player unless it would leave bounds)
+        mainCamera.position = new Vector3(clampedX, clampedY, desiredPos.z);
     }
+
+
 
     /// <summary>
     /// give an input to the blend tree for animations
