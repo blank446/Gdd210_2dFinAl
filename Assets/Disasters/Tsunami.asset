@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DisasterType
   disasterName: Tsunami
   prefab: {fileID: 3941238075155826442, guid: 9d3f9e12c8c66404f921ac54e2a9e1d0, type: 3}
-  cost: 2
+  cost: 1
   minSpawnDelay: 1
   maxSpawnDelay: 3
   minSpawnDistance: 15

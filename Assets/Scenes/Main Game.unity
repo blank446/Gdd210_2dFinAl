@@ -129,11 +129,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 599480054268690850, guid: c615c7cdcb573ef4988d996f42cc5fb2, type: 3}
       propertyPath: restTime
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 599480054268690850, guid: c615c7cdcb573ef4988d996f42cc5fb2, type: 3}
       propertyPath: waveTime
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 774880587042354065, guid: c615c7cdcb573ef4988d996f42cc5fb2, type: 3}
       propertyPath: m_LocalPosition.x
